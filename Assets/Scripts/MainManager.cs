@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text hsText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -60,11 +61,20 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+        
+        hsText.text = $"Best Score : {GameManager.gameManager.hsPlayerName} : {GameManager.gameManager.highScore}";
+    }
+
+    public void ReturnScene()
+    {
+        GameManager.gameManager.SaveScore();
+        SceneManager.LoadScene(0);
     }
 
     void AddPoint(int point)
     {
         m_Points += point;
+        GameManager.gameManager.currentScore = m_Points;
         ScoreText.text = $"Score : {m_Points}";
     }
 
