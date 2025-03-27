@@ -63,8 +63,6 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
-
-        
     }
 
     void AddPoint(int point)
