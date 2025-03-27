@@ -37,6 +37,8 @@ public class MainManager : MonoBehaviour
                 brick.onDestroyed.AddListener(AddPoint);
             }
         }
+
+        BestScoreText.text = $"Best Score : {GameManager.Instance.BestPlayerName} : {GameManager.Instance.BestPlayerScore}";
     }
 
     private void Update()
@@ -61,6 +63,8 @@ public class MainManager : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
+
+        
     }
 
     void AddPoint(int point)
@@ -76,7 +80,10 @@ public class MainManager : MonoBehaviour
         
         if (m_Points > GameManager.Instance.BestPlayerScore)
         {
-            
+            GameManager.Instance.SaveGame(m_Points);
+            GameManager.Instance.BestPlayerName = GameManager.Instance.CurrentPlayerName;
+            GameManager.Instance.BestPlayerScore = m_Points;
+            BestScoreText.text = $"Best Score : {GameManager.Instance.CurrentPlayerName} : {m_Points}";
         }
     }
 }

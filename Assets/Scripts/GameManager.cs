@@ -7,8 +7,6 @@ using TMPro;
 using JetBrains.Annotations;
 using System.IO;
 
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -16,10 +14,11 @@ using UnityEditor;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public TMP_Text BestScoreText;
     public string CurrentPlayerName;
     public string BestPlayerName = "None";
     public int BestPlayerScore = 0;
-    
+
     [System.Serializable]
     private class ScoreData
     {
@@ -40,6 +39,7 @@ public class GameManager : MonoBehaviour
         }
 
         LoadGame();
+        BestScoreText.text = $"Best Score: {BestPlayerName} : {BestPlayerScore}";
     }
 
     public void InputName(string name)
