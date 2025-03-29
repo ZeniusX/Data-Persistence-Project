@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public string CurrentPlayerName;
     public string BestPlayerName = "None";
     public int BestPlayerScore = 0;
-
     [System.Serializable]
     private class ScoreData
     {
